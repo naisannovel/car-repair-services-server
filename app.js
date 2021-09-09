@@ -12,7 +12,7 @@ app.use(cors());
 dotenv.config();
 
 // google auth
-require('./googleAuth/googleRoutes')(app);
+require('./googleAuth/googleAuthRoute')(app);
 
 app.get('/',(req,res)=>{
     res.send('hello world, i am root api')

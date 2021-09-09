@@ -15,11 +15,6 @@ const googleAuthSchema = new Schema({
         minlength:5,
         maxlength:255
     },
-    password:{
-        type:String,
-        minlength:5,
-        maxlength:1024
-    },
     role:{
         type:String,
         enum:['user','admin'],
@@ -36,11 +31,11 @@ const googleAuthSchema = new Schema({
 googleAuthSchema.methods.generateJWT = function(){
     const token = jwt.sign({
         _id:this._id,
-        name:this.email,
+        name:this.name,
         email:this.email,
         role:this.role
     },process.env.JWT_SECRET_KEY,{expiresIn:'1h'});
     return token;
 }
 
-module.exports.GoogleAuth = googleAuthSchema;
+module.exports.GoogleAuth = model('GoogleUser',googleAuthSchema);

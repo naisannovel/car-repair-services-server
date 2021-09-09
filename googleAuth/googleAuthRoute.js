@@ -2,5 +2,5 @@ const googleAuthRouter = require('./googleAuthRouter');
 
 
 module.exports = (app)=>{
-    app.use('/auth',googleAuthRouter)
+    app.use('/auth/google',googleAuthRouter)
 }
