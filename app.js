@@ -11,6 +11,8 @@ app.use(express.json());
 app.use(cors());
 dotenv.config();
 
+// google auth
+require('./googleAuth/googleRoutes')(app);
 
 app.get('/',(req,res)=>{
     res.send('hello world, i am root api')

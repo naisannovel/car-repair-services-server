@@ -31,6 +31,8 @@ const userAuthSchema = new Schema({
         enum: ['user', 'admin'],
         default: 'user'
     }
+}, {
+    timestamps: true
 })
 
 userAuthSchema.methods.generateJWT = function () {
@@ -45,7 +47,7 @@ userAuthSchema.methods.generateJWT = function () {
     return token;
 }
 
-const validateUser = user =>{
+const validateUser = user => {
     const schema = joi.object({
         name: joi.string().required().min(2).max(255),
         email: joi.string().min(5).max(255).required().email(),
