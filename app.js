@@ -18,7 +18,7 @@ app.get('/',(req,res)=>{
     res.send('hello world, i am root api')
 })
 
-app.use('/user',userAuthRouter);
+app.use('/api/user',userAuthRouter);
 
 app.use((err, req, res, next)=>{
     return res.status(500).send(err.message)
