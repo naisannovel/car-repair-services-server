@@ -27,4 +27,4 @@ module.exports = multer({
                 cb(new Error('only .png, .jpg, .jpeg format allowed'))
             }
     }
-}).single('photo');
+}).single('image');
