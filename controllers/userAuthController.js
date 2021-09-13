@@ -49,3 +49,9 @@ module.exports.login = async (req,res)=>{
         data:_.pick(user,['_id','name','email'])
     })
 }
+
+module.exports.updateUserRole = async (req,res)=>{
+    const result = await User.findOneAndUpdate({email:req.body.email},{role:'admin'},{new:true});
+    if(!result) return res.status(404).send('Invalid email, No user found')
+    if(result.role === 'admin') res.send(`wow, ${result.name} are admin now`)
+}

@@ -1,5 +1,6 @@
 const { ServiceModel, validate } = require('../models/serviceModel');
 
+// create
 module.exports.addServiceRouter = async (req,res)=>{
     const { value, error } = validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
@@ -16,3 +17,5 @@ module.exports.addServiceRouter = async (req,res)=>{
         res.send(error);
       }
 }
+
+// update
