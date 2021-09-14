@@ -1,7 +1,7 @@
 const { ServiceModel, validate } = require('../models/serviceModel');
 
 // create
-module.exports.addServiceRouter = async (req,res)=>{
+module.exports.addService = async (req,res)=>{
     const { value, error } = validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
     value.image = req.file.filename;
@@ -18,4 +18,16 @@ module.exports.addServiceRouter = async (req,res)=>{
       }
 }
 
-// update
+// get
+module.exports.fetchAllServices = async (req,res)=>{
+  const result = await ServiceModel.find();
+  res.send(result);
+}
+
+// delete
+module.exports.deleteService = async (req,res)=>{
+  const id = req.params.id;
+  const result = await ServiceModel.findByIdAndDelete(id);
+  if (!result) return res.status(404).send("not found");
+  res.send(`successfully deleted ${result.name} service`);
+}
