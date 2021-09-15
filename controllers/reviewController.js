@@ -3,7 +3,7 @@ const { ReviewModel } = require('../models/reviewModel');
 module.exports.addReview = async (req,res)=>{
     const data = req.body;
     data.image = req.file.filename;
-    console.log(data);
+    data.user = req.user._id
     const review = new ReviewModel(data);
     try {
         const result = await review.save();

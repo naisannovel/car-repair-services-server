@@ -24,7 +24,13 @@ const reviewSchema = new Schema({
         type: String,
         required: true
     },
-    userId: Schema.Types.ObjectId
-})
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    }
+}, { timestamps: true })
+
+
 
 module.exports.ReviewModel = model('Review',reviewSchema);

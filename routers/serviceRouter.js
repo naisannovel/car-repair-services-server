@@ -13,8 +13,4 @@ router.route('/service')
 router.route('/service/:id')
     .delete([authorize,admin],deleteService)
 
-router.route('/review')
-    .get(getReview)
-    .post([authorize,upload],addReview)
-
 module.exports = router;

@@ -7,6 +7,8 @@ const dotenv = require('dotenv');
 // router
 const userAuthRouter = require('./routers/userAuthRouter');
 const serviceRouter = require('./routers/serviceRouter');
+const reviewRouter = require('./routers/reviewRouter');
+const cartRouter = require('./routers/cartRouter');
 
 app.use(express.static(__dirname + '/media/img/'))
 app.use(express.json());
@@ -22,6 +24,8 @@ app.get('/',(req,res)=>{
 
 app.use('/api/user',userAuthRouter);
 app.use('/api', serviceRouter);
+app.use('/api/review', reviewRouter);
+app.use('/api/cart',cartRouter)
 
 app.use((err, req, res, next)=>{
     return res.status(500).send(err.message)
