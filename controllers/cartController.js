@@ -3,26 +3,33 @@ const { CartModel } = require("../models/cartModel");
 module.exports.addCart = async (req, res) => {
     const userId = req.user._id;
     const serviceId = req.params.id;
-    const item = await CartModel.findOne({
+    const userCartItem = await CartModel.findOne({
         user: userId,
     });
-    if (item) {
+
+    if (userCartItem !== null) {
         const result = await CartModel.findOne({
+            user: userId,
             "myService.service": serviceId,
         });
-
+        
         if (result)
             return res.status(400).send("service already exists in your Cart!");
 
-        const item = await CartModel.updateOne({
-            user: userId,
-        }, {
-            $push: {
-                myService: {
-                    service: serviceId,
+        try{
+            const item = await CartModel.updateOne({
+                user: userId,
+            }, {
+                $push: {
+                    myService: {
+                        service: serviceId,
+                    },
                 },
-            },
-        });
+            });
+            res.send('Thank you for taken our service')
+        }catch(err){
+            res.status(400).send(err);
+        }
     } else {
         let cartItem = new CartModel({
             user: userId,
@@ -32,7 +39,7 @@ module.exports.addCart = async (req, res) => {
         });
         try {
             const result = await cartItem.save();
-            res.status(201).send(result);
+            res.status(201).send('Thank you for taken our service');
         } catch (err) {
             res.status(400).send(err);
         }
