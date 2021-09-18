@@ -65,6 +65,16 @@ module.exports.getCartItem = async (req, res) => {
     return res.status(200).send('don\'t take any service');
 };
 
+module.exports.getAllCartItem = async (req,res) => {
+    const cartItems = await CartModel.find()
+    .populate("user", "name email")
+    .populate("myService.service");
+    if(cartItems.length){
+    return res.status(200).send(cartItems);
+    }
+    return res.status(200).send('don\'t take any service');
+};
+
 // module.exports.addCart = async (req,res)=>{
 //     const userId = req.user._id;
 //     const serviceId = req.params.id;
