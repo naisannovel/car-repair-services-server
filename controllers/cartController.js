@@ -33,20 +33,14 @@ module.exports.getCartItem = async (req, res) => {
         })
         .populate("user", "name email")
         .populate("service");
-    if(cartItems.length){
         return res.status(200).send(cartItems);
-    }
-    return res.status(200).send('don\'t take any service');
 };
 
 module.exports.getAllCartItem = async (req,res) => {
     const cartItems = await CartModel.find()
     .populate("user", "name email")
     .populate("service");
-    if(cartItems.length){
     return res.status(200).send(cartItems);
-    }
-    return res.status(200).send('don\'t take any service');
 };
 
 
