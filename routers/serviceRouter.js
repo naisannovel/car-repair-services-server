@@ -2,8 +2,7 @@ const router = require('express').Router();
 const authorize = require('../middlewares/authorize');
 const admin = require('../middlewares/admin');
 const upload = require('../multerFileUpload/multerFileUploadConfig');
-const { addService, fetchAllServices,deleteService } = require('../controllers/serviceController');
-const { addReview, getReview } = require('../controllers/reviewController');
+const { addService, fetchAllServices,deleteService, updateServicePrice } = require('../controllers/serviceController');
 
 
 router.route('/service')
@@ -11,6 +10,7 @@ router.route('/service')
     .post([authorize,admin,upload],addService)
 
 router.route('/service/:id')
+    .put([authorize,admin],updateServicePrice)
     .delete([authorize,admin],deleteService)
 
 module.exports = router;

@@ -31,3 +31,14 @@ module.exports.deleteService = async (req,res)=>{
   if (!result) return res.status(404).send("not found");
   res.send(`successfully deleted ${result.name} service`);
 }
+
+// update service price
+module.exports.updateServicePrice = async (req, res)=>{
+  const id = req.params.id;
+  const price = req.body;
+
+  const result = await CartModel.findByIdAndUpdate(id,price,{ new: true });
+  if(result){
+      return res.status(200).send('successfully updated')
+  }
+}
