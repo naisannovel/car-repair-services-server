@@ -33,11 +33,10 @@ module.exports.deleteService = async (req,res)=>{
 }
 
 // update service price
-module.exports.updateServicePrice = async (req, res)=>{
+module.exports.updateServicePrice = async (req,res)=>{
   const id = req.params.id;
   const price = req.body;
-
-  const result = await CartModel.findByIdAndUpdate(id,price,{ new: true });
+  const result = await ServiceModel.findByIdAndUpdate(id,price,{ new: true });
   if(result){
       return res.status(200).send('successfully updated')
   }
