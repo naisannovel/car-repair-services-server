@@ -15,6 +15,11 @@ const googleAuthSchema = new Schema({
         minlength:5,
         maxlength:255
     },
+    password: {
+        type: String,
+        minlength: 5,
+        maxlength: 1024
+    },
     role:{
         type:String,
         enum:['user','admin'],

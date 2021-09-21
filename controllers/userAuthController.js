@@ -1,7 +1,4 @@
-const {
-    User,
-    validate
-} = require('../models/userAuthModel');
+const { User, validate } = require('../models/userAuthModel');
 const bcrypt = require('bcrypt');
 const _ = require('lodash');
 

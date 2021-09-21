@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const passport = require('passport');
-require('./googleAuthConfig');
 
 // google auth router
 router.route('/')
