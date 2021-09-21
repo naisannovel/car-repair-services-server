@@ -3,9 +3,10 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const dotenv = require('dotenv');
+dotenv.config();
 
 // payment gateway
-const stripe = require("stripe")("sk_test_51IeH6gL6cSctvL5CukEbvd1UWaoGMCviWuEgQpljyoOazDcJtGZWG5voP6WjaCHUXqEUakIGn01N33ACo93a7obc00T0bxNe4V");
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 // router
 const userAuthRouter = require('./routers/userAuthRouter');
@@ -16,7 +17,6 @@ const cartRouter = require('./routers/cartRouter');
 app.use(express.static(__dirname + '/media/img/'))
 app.use(express.json());
 app.use(cors());
-dotenv.config();
 
 // google auth
 require('./googleAuth/googleAuthRoute')(app);
