@@ -2,6 +2,7 @@ require('express-async-errors');
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const compression = require('compression');     // during deployment need this package.
 const dotenv = require('dotenv');
 dotenv.config();
 const passport = require('passport');
@@ -20,6 +21,7 @@ const paymentRouter = require('./routers/paymentRouter');
 // Middleware
 app.use(express.static(__dirname + '/media/img/'))
 app.use(express.json());
+app.use(compression());
 app.use(cors());
 app.use(passport.initialize())
 
