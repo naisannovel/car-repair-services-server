@@ -6,6 +6,7 @@ const compression = require('compression');     // during deployment need this p
 const dotenv = require('dotenv');
 dotenv.config();
 const passport = require('passport');
+const fileUpload = require('express-fileupload');
 
 // GoogleStrategy
 require('./googleAuthStrategy/googleAuthConfig');
@@ -23,7 +24,8 @@ app.use(express.static(__dirname + '/media/img/'))
 app.use(express.json());
 app.use(compression());
 app.use(cors());
-app.use(passport.initialize())
+app.use(passport.initialize());
+app.use(fileUpload());
 
 // root api
 app.get('/',(req,res)=>{

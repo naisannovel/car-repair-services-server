@@ -2,9 +2,20 @@ const { ServiceModel, validate } = require('../models/serviceModel');
 
 // create
 module.exports.addService = async (req,res)=>{
+  
+    const file = req.files.image;
+    const newImg = file.data;
+    const encImg = newImg.toString('base64');
+    const image = {
+      contentType: file.mimetype,
+      size: file.size,
+      img: Buffer.from(encImg, 'base64')
+    };
+
     const { value, error } = validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
-    value.image = req.file.filename;
+    value.image = image;
+    console.log(value);
     const service = new ServiceModel(value);
     try {
         const result = await service.save();

@@ -7,7 +7,7 @@ const { addService, fetchAllServices,deleteService, updateServicePrice } = requi
 
 router.route('/service')
     .get(fetchAllServices)
-    .post([authorize,admin,upload],addService)
+    .post([authorize,admin],addService)
 
 router.route('/service/:id')
     .put([authorize,admin],updateServicePrice)
