@@ -5,6 +5,6 @@ const { addReview, getReview } = require('../controllers/reviewController');
 
 router.route('/')
     .get(getReview)
-    .post([authorize,upload],addReview)
+    .post(authorize,addReview)
 
 module.exports = router;

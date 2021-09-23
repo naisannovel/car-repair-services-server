@@ -21,7 +21,7 @@ const reviewSchema = new Schema({
         maxlength: 2024
     },
     image: {
-        type: String,
+        type: Object,
         required: true
     },
     user: {

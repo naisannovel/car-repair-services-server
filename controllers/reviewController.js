@@ -2,8 +2,18 @@ const { ReviewModel } = require('../models/reviewModel');
 
 module.exports.addReview = async (req,res)=>{
     const data = req.body;
-    data.image = req.file.filename;
     data.user = req.user._id
+
+    const file = req.files.image;
+    const newImg = file.data;
+    const encImg = newImg.toString('base64');
+    const image = {
+      contentType: file.mimetype,
+      size: file.size,
+      img: Buffer.from(encImg, 'base64')
+    };
+
+    data.image = image;
     const review = new ReviewModel(data);
     try {
         const result = await review.save();
