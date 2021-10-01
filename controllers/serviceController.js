@@ -29,8 +29,14 @@ module.exports.addService = async (req,res)=>{
 }
 
 // get
-module.exports.fetchAllServices = async (req,res)=>{
+module.exports.fetchAllServicesAdmin = async (req,res)=>{
   const result = await ServiceModel.find({}).select({ image: 0 });
+  res.send(result);
+}
+
+// get
+module.exports.fetchAllServices = async (req,res)=>{
+  const result = await ServiceModel.find({});
   res.send(result);
 }
 
