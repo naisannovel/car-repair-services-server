@@ -5,10 +5,10 @@
 <h2>Features</h2>
  <ul>
    <li>user can choose any service</li>
-   <li>signUp for successfully placed order</li>
-   <li>use stripe for user's payment</li>
+   <li>signup for placed order</li>
+   <li>use credit card for pay</li>
+   <li>user can review about any service</li>
    <li>admin can add, update, delete services through admin panel</li>
-   <li>User can review about any service</li>
 </ul>
 <br>
  <h2>Front-End Technologies</h2>
