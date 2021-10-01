@@ -34,5 +34,3 @@
     <li>Multer</li>
     <li>Lodash</li>
   </ul>
-<br>
-<a href="https://github.com/naisannovel/car-repair-services-server" target='_blank'>Back-end Repository</a>
