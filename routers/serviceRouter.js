@@ -7,7 +7,6 @@ const { addService, fetchAllServices,deleteService, updateServicePrice, fetchAll
 
 router.route('/service')
     .get(fetchAllServices)
-    .get(fetchAllServicesAdmin)
     .post([authorize,admin],addService)
 
 router.route('/service/all')
