@@ -37,9 +37,9 @@ module.exports.getCartItem = async (req, res) => {
 };
 
 module.exports.getAllCartItem = async (req,res) => {
-    const cartItems = await CartModel.find()
+    const cartItems = await CartModel.find({})
     .populate("user", "name email")
-    .populate("service");
+    .populate("service", "name");
     return res.status(200).send(cartItems);
 };
 
