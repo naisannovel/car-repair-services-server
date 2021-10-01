@@ -30,7 +30,7 @@ module.exports.addService = async (req,res)=>{
 
 // get
 module.exports.fetchAllServices = async (req,res)=>{
-  const result = await ServiceModel.find();
+  const result = await ServiceModel.find({}).select({ image: 0 });
   res.send(result);
 }
 
@@ -46,6 +46,6 @@ module.exports.deleteService = async (req,res)=>{
 module.exports.updateServicePrice = async (req,res)=>{
   const id = req.params.id;
   const price = req.body;
-  const result = await ServiceModel.findByIdAndUpdate(id,price,{ new: true });
+  const result = await ServiceModel.findByIdAndUpdate(id,price,{ new: true }).select({ image:0 });
   return res.status(200).send(result)
 }
