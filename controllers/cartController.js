@@ -32,7 +32,7 @@ module.exports.getCartItem = async (req, res) => {
             user: req.user._id,
         })
         .populate("user", "name email")
-        .populate("service", "name");
+        .populate("service", "name price");
         return res.status(200).send(cartItems);
 };
 
